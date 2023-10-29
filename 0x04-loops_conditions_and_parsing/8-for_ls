@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # displays content of th current directory in a list format
-list=$(ls)
-for i in $list; do
-echo "$i"
-done
+ls > list
+cut  --complement -d "-" -f 1 list
