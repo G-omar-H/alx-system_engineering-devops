@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# display's clock for 12 hours
+i=0
+while [ "$i" -ne 12 ]; do
+echo "Hour: $i"
+j=1
+while [ "$j" -le 59 ]; do
+echo "$j"
+j=$((j+1))
+done
+i=$((i+1))
+done
