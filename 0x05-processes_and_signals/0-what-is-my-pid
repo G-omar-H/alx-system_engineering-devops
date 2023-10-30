@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displays process id of the current runing process
+ps > pid
+ cut -d " " pid -f 2 | tail -n 1
