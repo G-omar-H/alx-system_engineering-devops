@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# bash stript that displays open ports with a listenig sockets(ip + port)
-
-netstat -lp
