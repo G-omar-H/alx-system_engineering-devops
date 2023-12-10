@@ -3,5 +3,5 @@
 # localhost resolves to 127.0.0.2
 # facebook.com resolves to 8.8.8.8.
 sudo cp /etc/hosts ~/hosts.new
-sed  -r -i -e '/localhost/s/^([0-9]+\.)([0-9]+\.)([0-9]+\.)([0-9]+)/127.0.0.2/' -i  -e '2 i 8.8.8.8\tfacebook.com ' /etc/hosts;
+sed  -r -i -e '/localhost/s/^([0-9]+\.)([0-9]+\.)([0-9]+\.)([0-9]+)/127.0.0.2/' -i  -e '2 a 8.8.8.8\tfacebook.com ' /etc/hosts;
 sudo cp -f ~/hosts.new /etc/hosts
