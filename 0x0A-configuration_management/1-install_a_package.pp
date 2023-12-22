@@ -1,5 +1,5 @@
 # Puppet script manifestating to install flask from pip3
-package { 'python3.8':
+package { 'python':
   ensure => present,
 }
 package { 'python3-pip':
@@ -15,5 +15,7 @@ package {'flask':
 package { 'Werkzeug':
   ensure   => present,
   provider => pip3,
+  require  => package['python3-pip'],  
+  }
 }
 
