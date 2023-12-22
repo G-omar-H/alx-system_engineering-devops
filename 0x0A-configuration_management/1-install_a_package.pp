@@ -10,12 +10,13 @@ package {'flask':
   ensure   => '2.1.0',
   name     => flask,
   provider => pip3,
+  require  => package['python3-pip'],
 }
 
 package { 'Werkzeug':
   ensure   => present,
   provider => pip3,
-  require  => package['python3-pip'],  
+  require  => package['python3-pip'],
   }
 }
 
