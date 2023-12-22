@@ -15,7 +15,7 @@ package {'flask':
 
 package { 'Werkzeug':
   ensure   => '2.1.1',
-  provider => pip3,
+  provider => pip,
   require  => package['python3-pip'],
   }
 }
