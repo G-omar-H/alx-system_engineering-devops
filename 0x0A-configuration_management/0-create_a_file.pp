@@ -1,5 +1,5 @@
 # puppet script manifestation to create a /tmp/school file
-file {create_school:
+file {'create school':
   ensure  => present,
   path    => '/tmp/school',
   content => 'I love Puppet',
