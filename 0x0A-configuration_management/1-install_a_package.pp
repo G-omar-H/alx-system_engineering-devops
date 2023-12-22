@@ -2,7 +2,7 @@
 # Installs flask and required packages
 
 # Install Python 3.8.10
-package { 'python3.8':
+package { 'python':
   ensure => present,
 }
 
