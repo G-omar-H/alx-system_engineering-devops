@@ -3,5 +3,5 @@ file_line { 'PasswordAuthentication':
   ensure => present,
   path   => '~/.ssh/school',
   line   => '       PasswordAuthentication no',
-  match  -> '.\s+PasswordAuthentication',
+  match  -> '/.\s+PasswordAuthentication\s+yes/gm',
 }
