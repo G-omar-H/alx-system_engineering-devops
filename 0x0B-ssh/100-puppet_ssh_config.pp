@@ -1,5 +1,7 @@
 # puppet script to setup client SSH configuration file to disable password authentification
 file_line { 'PasswordAuthentication':
-  ensure => absent,
+  ensure => present,
   path   => '~/.ssh/school',
+  line   => '       PasswordAuthentication no',
+  match  -> '.\w+PasswordAuthentication',
 }
