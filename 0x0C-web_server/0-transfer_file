@@ -17,6 +17,6 @@ path=$1
 ip=$2
 user=$3
 key=$4
-scp -i "$key"  -o "PasswordAuthentication no" -o "User '$user'" "$path"  "$user"@"$ip":~/
+scp -i "$key"   -o "User '$user'" "$path"  "$ip":~/
  
 
