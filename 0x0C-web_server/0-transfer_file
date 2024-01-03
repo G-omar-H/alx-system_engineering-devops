@@ -9,7 +9,7 @@
 #        The username scp connects with
 #        The path to the SSH private key that scp uses
 #    Display Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY if less than 3 parameters passed
-if [ $# -lt 3 ]
+if [ $# -lt 4 ]
 then
         echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
         exit
