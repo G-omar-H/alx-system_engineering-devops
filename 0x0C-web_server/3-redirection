@@ -4,7 +4,7 @@ apt-get update;
 apt-get install nginx -y;
 ufw allow 'Nginx HTTP';
 eval "echo Hello World! > /var/www/html/index.nginx-debian.html";
-payload="\n\tlocation /redirect_me {\n\t\treturn 301 https://youtu.be/dQw4w9WgXcQ; \n\t}\n";
+payload="\n\tlocation /redirect_me {\n\t\treturn 301  https://www.youtube.com/watch?v=QH2-TGUlwu4; \n\t}\n";
 sed -i "37i\ $payload" /etc/nginx/sites-available/default;
 service nginx restart;
 
