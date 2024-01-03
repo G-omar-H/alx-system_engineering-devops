@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Bash to install and configure NGINX web server on a remote server
-sudo su;
 apt-get update;
 apt-get install nginx -y;
 ufw allow 'Nginx HTTP';
