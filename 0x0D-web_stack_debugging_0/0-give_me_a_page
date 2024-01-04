@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # Bash script to debug a Docker container running apache web server not returning the requested web page
-sudo docker exec bd76d4a010ec  service apache2 start;
+docker exec bd76d4a010ec  service apache2 start;
