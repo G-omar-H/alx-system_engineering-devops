@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Bash script that automate customate nginx header configuration
+hostname=$(hostname);
+payload="       add_header X-Served-By $hostname;"
+sed -i "/listen \[::\]:80 default_server;/a $payload" /etc/nginx/sites-available/default;
+sudo service nginx restart;
+
