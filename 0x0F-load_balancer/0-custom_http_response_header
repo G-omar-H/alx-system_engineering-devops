@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-#Double the number of webservers
-apt-get -y update
-apt-get -y install nginx
-config="/etc/nginx/sites-available/default"
-sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$HOSTNAME';/" $config
-service nginx restart
