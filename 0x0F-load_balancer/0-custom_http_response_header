@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Bash script that automate customate nginx header configuration
-hostname=$(hostname);
-payload='\tadd_header X-Served-By "$hostname";'
+payload="\ \tadd_header X-Served-By $HOSTNAME;"
 config_file="/etc/nginx/sites-available/default";
 sudo apt-get -y update;
 sudo apt-get -y install nginx;
-sed -i "/listen \[::\]:80 default_server;/a $payload" $config_file;
+sudo sed -i "/listen \[::\]:80 default_server;/a $payload" $config_file;
 sudo service nginx restart;
+exit 0;
