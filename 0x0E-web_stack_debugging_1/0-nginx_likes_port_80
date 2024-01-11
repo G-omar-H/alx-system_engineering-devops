@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+"""
+web stack debugging
+"""
+# Install Nginx
+apt-get update
+apt-get install -y nginx
+
+# Configure Nginx to listen on port 80
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx
+service nginx restart
