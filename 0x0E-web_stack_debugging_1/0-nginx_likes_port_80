@@ -2,4 +2,4 @@
 # Configures an Nginx server to listen on port 80.
 
 apt-get update && apt-get install nginx -y
-sudo service nginx start
+service nginx start
