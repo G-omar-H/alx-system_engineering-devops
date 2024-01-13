@@ -11,6 +11,7 @@ global
 	# Default SSL material locations
 	ca-base /etc/ssl/certs
 	crt-base /etc/ssl/private
+	ssl-dh-param-file /etc/haproxy/dhparams.pem
 
 	# See: https://ssl-config.mozilla.org/#server=haproxy&server-version=2.0.3&config=intermediate
         ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
@@ -37,12 +38,15 @@ defaults
 
 frontend http-web
     bind *:80
-    bind *:443 ssl crt /etc/letsencrypt/live/www.queryagency.tech/fullchain.pem
+    bind *:443 ssl crt  /etc/ssl/www.queryagency.tech/www.queryagency.tech.pem alpn h2,http/1.1
     redirect scheme https code 301 if !{ ssl_fc }
+    http-response set-header Strict-Transport-Security max-age=63072000
+    default_backend web-servers
 
-listen myserver
-	bind *:80
+backend web-servers
 	balance roundrobin
-	server server1 100.25.15.47:80 check
-	server server2 52.91.121.153:80 check
+	redirect scheme https if !{ ssl_fc }
+	option httpchk GET /
+	server 421116-web-01 100.25.15.47:80 check maxconn 300
+	server 421116-web-02 52.91.121.153:80 check maxconn 300
 
