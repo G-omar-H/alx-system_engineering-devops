@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Bash script to fetch a domain name from command line.
+domain=$1
+if [ "$2" ]
+then
+    sub=$2
+    subdomain="$sub.$domain"
+    record=$(dig "$subdomain" | grep -A1 'ANSWER SECTION' | tail -n -1 | awk '{print $4}')
+    ip=$(dig "$subdomain" | grep -A1 'ANSWER SECTION' | tail -n -1 | awk '{print $5}')
+    echo "The subdomain $sub is a $record record and points to $ip"
+else
+    sub_list=('www' 'lb-01' 'web-01' 'web-02')
+    for i in "${sub_list[@]}"
+    do
+        subdomain="$i.$domain"
+        record=$(dig "$subdomain" | grep -A1 'ANSWER SECTION' | tail -n -1 | awk '{print $4}')
+        ip=$(dig "$subdomain" | grep -A1 'ANSWER SECTION' | tail -n -1 | awk '{print $5}')
+        echo "The subdomain $i is a $record record and points to $ip"
+    done
+fi
