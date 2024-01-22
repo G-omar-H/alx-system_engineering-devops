@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script that takes an argument and excute whoami command under the user on that argument
+su $1;
+whoami;
