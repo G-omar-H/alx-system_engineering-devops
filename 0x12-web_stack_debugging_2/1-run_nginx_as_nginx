@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Bash script to configure a container to run NGInX as nginx user
+sed -rine  "s/^user\s+(www-data);$/\1 nginx/p" /etc/nginx/nginx.conf;
