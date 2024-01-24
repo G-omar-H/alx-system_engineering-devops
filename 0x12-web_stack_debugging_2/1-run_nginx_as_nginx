@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Bash script to configure a container to run NGInX as nginx user
 sed -rine  "s/^user\s+(www-data);$/\1 nginx/p" /etc/nginx/nginx.conf;
-sed -rne 's/(80)/ 8080/p' /etc/nginx/sites-enabled/default;
+sed -rine 's/80/8080/g' /etc/nginx/sites-enabled/default;
 chmod 644 /etc/nginx/nginx.conf
 pkill apache2
 sudo -u nginx service nginx start
