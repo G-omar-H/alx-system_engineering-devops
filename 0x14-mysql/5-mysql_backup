@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# dump all database and compress to a .tar.gz
+mysqldump -uroot -p"$1" -A > backup.sql;
+tar -cf $(date -I).tar.gz backup.sql;
