@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Bash script to configure a container to run NGInX as nginx user
-sed -rine  "s/^user\s+(www-data);$/\1 nginx/p" /etc/nginx/nginx.conf;
-sed -rne 's/(80)/ 8080/p' /etc/nginx/sites-enabled/default;
+#Fixes a web server to run nginx as the nginx user listening to port 8080
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 chmod 644 /etc/nginx/nginx.conf
 pkill apache2
 sudo -u nginx service nginx start
-
