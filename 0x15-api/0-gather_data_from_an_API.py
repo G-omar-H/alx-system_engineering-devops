@@ -12,8 +12,6 @@ if __name__ == "__main__":
     import requests
     import sys
 
-
-
     if __name__ == "__main__":
         id = sys.argv[1]
 
