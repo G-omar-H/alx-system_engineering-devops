@@ -30,10 +30,12 @@ if __name__ == "__main__":
 
     for item in content_2:
         if item["userId"] == int(id):
+            sub = {}
             sub["task"] = item["title"]
             sub["completed"] = item["completed"]
             sub["username"] = content["username"]
             ls.append(sub)
+            print(">>", ls)
 
     dct[id] = ls
 
