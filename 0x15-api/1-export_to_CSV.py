@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
         p = requests.get(url_1)
         content = json.loads(p.content)
-        name = content["name"]
+        name = content["username"]
 
         r = requests.get(url_2)
         content_2 = json.loads(r.content)
