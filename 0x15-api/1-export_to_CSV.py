@@ -31,7 +31,7 @@ if __name__ == "__main__":
 
         for item in content_2:
             if item["userId"] == int(id):
-                temp = '"{}", "{}", "{}", "{}"'.format(
+                temp = '"{}","{}","{}","{}"'.format(
                     id, name, item["completed"], item["title"]
                 )
                 alist.append(temp)
