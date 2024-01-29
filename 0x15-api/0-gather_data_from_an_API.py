@@ -8,11 +8,11 @@ his/her TODO list progress
 
 
 if __name__ == "__main__":
+    import json
     import requests
-
     import sys
 
-    import json
+
 
     if __name__ == "__main__":
         id = sys.argv[1]
