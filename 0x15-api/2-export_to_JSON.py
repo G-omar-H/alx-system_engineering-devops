@@ -12,30 +12,30 @@ if __name__ == "__main__":
     import requests
     import sys
 
-    if __name__ == "__main__":
-        id = sys.argv[1]
+    id = sys.argv[1]
 
-        url_1 = f"https://jsonplaceholder.typicode.com/users/{id}"
+    url_1 = f"https://jsonplaceholder.typicode.com/users/{id}"
+    url_2 = "https://jsonplaceholder.typicode.com/todos"
 
-        url_2 = "https://jsonplaceholder.typicode.com/todos"
+    p = requests.get(url_1)
+    content = json.loads(p.content)
+    name = content["name"]
 
-        p = requests.get(url_1)
-        content = json.loads(p.content)
-        name = content["name"]
+    r = requests.get(url_2)
+    content_2 = json.loads(r.content)
 
-        r = requests.get(url_2)
-        content_2 = json.loads(r.content)
+    dct = {}
+    sub = {}
+    ls = []
 
-        dct = {}
-        sub = {}
-        ls = []
+    for item in content_2:
+        if item["userId"] == int(id):
+            sub["task"] = item["title"]
+            sub["completed"] = item["completed"]
+            sub["username"] = content["username"]
+            ls.append(sub)
 
-        for item in content_2:
-            if item["userId"] == int(id):
-                sub["task"] = item["title"]
-                sub["completed"] = item["completed"]
-                sub["username"] = content["username"]
-                ls.append(sub)
-        dct[id] = ls
+    dct[id] = ls
 
-        print(dct)
+    with open(f"{id}.json", "w") as fd:
+        json.dump(dct, fd)
