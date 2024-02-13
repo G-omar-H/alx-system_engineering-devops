@@ -17,13 +17,13 @@ def number_of_subscribers(subreddit):
     Args:
         subreddit (str): given subreddit from command line
     """
-    try:
-        url = f"https://www.reddit.com/subreddits/search.json?q={subreddit}"
-        req = requests.get(url, headers={"User-agent": "yourbot"})
-    except Exception:
+    url = f"https://www.reddit.com/subreddits/search.json?q={subreddit}"
+    req = requests.get(url, headers={"User-agent": "yourbot"},
+                       allow_redirects=False).json()
+    if len(req["data"]["children"]) == 0:
         return 0
-    req = req.json()
-    total = 0
-    for r in req["data"]["children"]:
-        total += r["data"]["subscribers"]
-    return total
+    else:
+        total = 0
+        for r in req["data"]["children"]:
+            total += r["data"]["subscribers"]
+        return total
