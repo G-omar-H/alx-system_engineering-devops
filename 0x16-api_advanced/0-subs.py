@@ -1,28 +1,16 @@
 #!/usr/bin/python3
-"""
-python script to fetch a given subreddit
-from commandline api and
-return number of subscribers
-return:
-    number of subscribers to the subreddit
-    0 if wrong subreddit
-"""
+"""Function to query subscribers on a given Reddit subreddit."""
 import requests
-import json
-from sys import argv
 
 
 def number_of_subscribers(subreddit):
-    """
-    get the numver of subscribers for a subreddit
-    Args:
-        subreddit (str): given subreddit from command line
-    """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    try:
-        req = requests.get(url, headers={"User-agent": "yourbot"},
-                           allow_redirects=False)
-        res = req.json()
-    except Exception:
+    """Return the total number of subscribers on a given subreddit."""
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    }
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 404:
         return 0
-    return res['data']['subscribers']
+    results = response.json().get("data")
+    return results.get("subscribers")
