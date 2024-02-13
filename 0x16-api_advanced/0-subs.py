@@ -19,9 +19,10 @@ def number_of_subscribers(subreddit):
         subreddit (str): given subreddit from command line
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    req = requests.get(url, headers={"User-agent": "yourbot"},
-                       allow_redirects=False)
-    res = req.json()
-    if len(res["data"]) == 0:
+    try:
+        req = requests.get(url, headers={"User-agent": "yourbot"},
+                           allow_redirects=False)
+        res = req.json()
+    except Exception:
         return 0
     return res['data']['subscribers']
