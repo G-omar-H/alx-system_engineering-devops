@@ -8,6 +8,7 @@ return:
     0 if wrong subreddit
 """
 import requests
+import json
 from sys import argv
 
 
@@ -17,13 +18,10 @@ def number_of_subscribers(subreddit):
     Args:
         subreddit (str): given subreddit from command line
     """
-    url = f"https://www.reddit.com/subreddits/search.json?q={subreddit}"
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
     req = requests.get(url, headers={"User-agent": "yourbot"},
-                       allow_redirects=False).json()
-    if len(req["data"]["children"]) == 0:
+                       allow_redirects=False)
+    res = req.json()
+    if len(res["data"]) == 0:
         return 0
-    else:
-        total = 0
-        for r in req["data"]["children"]:
-            total += r["data"]["subscribers"]
-        return total
+    return res['data']['subscribers']
