@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# bash script to reload gunicorn process gracefully
+ps -C gunicorn --no-headers -o ppid,pid | awk '$1=="1" {print $2}' | while read -r pid; do sudo kill -s HUP "$pid";done
+
