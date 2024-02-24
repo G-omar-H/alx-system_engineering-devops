@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-sudo kill -HUP "$(ps -C gunicorn fch -o pid | head -n 1)"
+sudo kill -HUP "$(ps -C gunicorn ch -o pid | head -n 1)"
 
